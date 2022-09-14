@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            Profile
+        </title>
+    </head>
+    <body>
+        <% if(locals.profile_user._id){ %>
+        <h1>
+            <img src="<%= locals.profile_user.avatar%>" alt="<%= locals.profile_user.name%>" width="150">
+        </h1>
+        <form action="/user/update/<%= locals.profile_user._id%>" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" value="<%= locals.profile_user.name %>" placeholder="Your Name" required>
+            <input type="hidden" name="id" value="<%= locals.profile_user._id%>">
+            <input type="text" name="email" value="<%= locals.profile_user.email %>" placeholder="Your Email" required>
+            <input type="file" name="avatar" placeholder="Profile Picture">
+            <input type="submit" value="Update">
+        </form>  
+        <% } %>
+    </body>
+</html>
